@@ -7,6 +7,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.ui.AbstractComponentConnector;
+import com.vaadin.client.ui.VTextField;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addons.maskedtextfield.MaskedTextField;
 import org.vaadin.addons.maskedtextfield.client.masks.AlphanumericMask;
@@ -72,7 +73,7 @@ public class MaskedTextFieldConnector extends AbstractComponentConnector impleme
         super.onStateChanged( stateChangeEvent );
 
         // TODO do something useful
-        if( !mask.equals( getState().mask ) ) setMask( getState().mask );
+        if( mask==null || !mask.equals( getState().mask ) ) setMask( getState().mask );
 
 //        final String text = getState().text;
 //        getWidget().setText( text );
@@ -208,6 +209,7 @@ public class MaskedTextFieldConnector extends AbstractComponentConnector impleme
             {
                 validateAndShoywUserInput( event );
             }
+            event.preventDefault();
         }
     }
 
@@ -236,14 +238,12 @@ public class MaskedTextFieldConnector extends AbstractComponentConnector impleme
             {
                 char character = maskStrategy.getChar( event.getCharCode() );
                 showUserInput( character );
-//                event.preventDefault();
             }
         }
         else
         {
             getWidget().setCursorPos( getNextPosition( getWidget().getCursorPos() ) );
         }
-        event.preventDefault();
     }
 
     private void showUserInput( char character )
@@ -347,7 +347,7 @@ public class MaskedTextFieldConnector extends AbstractComponentConnector impleme
             char character = string.charAt( index );
             if( maskTest.get( index ) != null && character == placeholder )
             {
-                getWidget().setValue( "" );
+                getWidget().setValue( "", true );
                 return;
             }
         }
