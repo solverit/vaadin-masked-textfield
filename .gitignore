@@ -5,3 +5,4 @@ build/*
 gwt/*
 dist/*
 /target
+/.idea

@@ -1,7 +1,5 @@
-MaskedTextField for Vaadin
+Masked TextField for Vaadin 7
 =========================================
-
-For more information please checkout http://vaadin.com/addon/maskedtextfield
 
 Overview of currently available masks:
 
@@ -25,31 +23,3 @@ Date / time: ##/##/#### ##:##
 State: UU
 HTML Color: '#HHHHHH
 An capitalized 6 letter word: ULLLLL
-
-
-
-TODO
-=========================================
-- setValidChars(",. ")
-- Create an tab "try it" to allow the Demo App user to specify the mask and see the mask applied in real-time.
-- Deploy demo app somewhere
-
-
-
-Known issues:
-=========================================
-None. =)
-
-
-
-FUTURE ROADMAP
-=========================================
- - Support for left aligned input with 0 filling.
- - Currency and thousand separators
-
-
-CHANGELOG
-=========================================
-* 30th June 2011 (tag 0.1.2)
-- tab key press corrected
-- cursor is positioned in first position allowed when field is focused.
